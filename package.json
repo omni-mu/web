@@ -1,0 +1,23 @@
+{
+  "name": "driver-admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001"
+  },
+  "dependencies": {
+    "@types/react-dom": "^19.3.0",
+    "next": "^16.4.0",
+    "pg": "^8.13.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/pg": "^8.11.10",
+    "@types/react": "^19.3.0",
+    "typescript": "^5.5.0"
+  }
+}

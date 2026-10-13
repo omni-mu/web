@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700;900&amp;display=swap');
+    </style>
+    <!-- Clip everything to the rounded icon shape -->
+    <clipPath id="iconClip">
+      <rect width="1024" height="1024" rx="200" ry="200"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#iconClip)">
+    <!-- Dark green background -->
+    <rect width="1024" height="1024" fill="#1c683c"/>
+
+    <!-- Pill mark -->
+    <rect x="152" y="220" width="720" height="256" rx="128" ry="128"
+      fill="none" stroke="#FFFFFF" stroke-width="64"/>
+
+    <!-- OMNI wordmark — larger, pushed down -->
+    <text x="512" y="740"
+      font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif"
+      font-size="180"
+      font-weight="400"
+      fill="#FFFFFF"
+      text-anchor="middle"
+      letter-spacing="-2">Omni</text>
+
+    <!-- Yellow bottom strip -->
+    <rect x="0" y="856" width="1024" height="168" fill="#F5C518"/>
+
+    <!-- Captain label in dark green on yellow -->
+    <text x="512" y="968"
+      font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif"
+      font-size="72"
+      font-weight="700"
+      fill="#0A3D1F"
+      text-anchor="middle"
+      letter-spacing="6">CAPTAIN</text>
+  </g>
+</svg>
