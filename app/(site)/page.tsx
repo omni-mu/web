@@ -4,9 +4,17 @@ import { RouteMark } from '@/components/site/route-mark';
 import { Partners } from '@/components/site/partners';
 import { CityGlyph, PhoneGlyph, WheelGlyph } from '@/components/site/glyphs';
 import { ArrowIcon } from '@/components/icons';
+import { DRIVER_APP, RIDER_APP, SITE_URL } from '@/lib/site';
 
-const DRIVER_APP = 'https://play.google.com/store/apps/details?id=com.omni.captain';
-const RIDER_APP = 'https://play.google.com/store/apps/details?id=com.omni.rides';
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'Organization', '@id': `${SITE_URL}/#org`, name: 'Omni', url: SITE_URL, logo: `${SITE_URL}/logo-omni.svg`, areaServed: { '@type': 'City', name: 'Bengaluru' } },
+    { '@type': 'MobileApplication', name: 'Omni', operatingSystem: 'ANDROID', applicationCategory: 'TravelApplication', url: RIDER_APP, publisher: { '@id': `${SITE_URL}/#org` } },
+    { '@type': 'MobileApplication', name: 'Omni Captain', operatingSystem: 'ANDROID', applicationCategory: 'BusinessApplication', url: DRIVER_APP, publisher: { '@id': `${SITE_URL}/#org` } },
+  ],
+};
+
 const ext = { target: '_blank', rel: 'noopener noreferrer' } as const;
 
 const PROBLEMS = [
@@ -45,6 +53,7 @@ const Mark = () => (
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
       <header className="nav">
         <a href="#top" className="logo" aria-label="Omni home">
           <Mark />
