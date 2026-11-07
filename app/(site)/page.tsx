@@ -155,6 +155,9 @@ export default function Home() {
 
       <footer className="foot">
         <span className="logo"><Mark /><span>Omni</span></span>
+        <div className="foot-links">
+          <a href="/terms">Terms of Service</a>
+        </div>
         <small>© {new Date().getFullYear()} Omni. One app. Every move.</small>
       </footer>
     </>
