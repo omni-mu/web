@@ -12,8 +12,8 @@ export default function EarningsPage() {
 
           <h1 id="title">Daily earnings</h1>
           <p className="lede">
-            Pick the day and paste one driver per line as email, amount. The leaderboard shows the latest day entered,
-            and submitting a day again replaces its amounts.
+            Pick the day and paste one driver per line as email, amount. The leaderboard shows the day you updated
+            most recently, and submitting a day again replaces its amounts.
           </p>
 
           <EarningsForm />
