@@ -1,4 +1,5 @@
-import { approveDriver, normalizeEmail } from '@/lib/approve-driver';
+import { approveDriver } from '@/lib/approve-driver';
+import { normalizeEmail } from '@/lib/email';
 
 export const runtime = 'nodejs';
 

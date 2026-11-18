@@ -1,13 +1,12 @@
 'use client';
 
 import { FormEvent, useRef, useState } from 'react';
+import { postJson } from '@/lib/post-json';
 import { AlertIcon, ArrowIcon, CheckIcon, SpinnerIcon } from './icons';
 
 export type Approval = { email: string; approvedAt: string };
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
-
-const NETWORK_ERROR = 'Can’t reach the server. Check your connection and try again.';
 
 const formatTime = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
@@ -24,26 +23,16 @@ export function ApproveForm({ onApproved }: { onApproved: (approval: Approval) =
     event.preventDefault();
     setStatus('loading');
 
-    try {
-      const response = await fetch('/api/approve', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-      const data = await response.json().catch(() => ({}));
+    const result = await postJson<{ email: string }>('/api/approve', { email });
 
-      if (response.ok) {
-        setStatus('success');
-        setMessage(data.email);
-        setEmail('');
-        onApproved({ email: data.email, approvedAt: formatTime() });
-      } else {
-        setStatus('error');
-        setMessage(data.error ?? 'Something went wrong. Try again.');
-      }
-    } catch {
+    if (result.ok) {
+      setStatus('success');
+      setMessage(result.data.email);
+      setEmail('');
+      onApproved({ email: result.data.email, approvedAt: formatTime() });
+    } else {
       setStatus('error');
-      setMessage(NETWORK_ERROR);
+      setMessage(result.error);
     }
 
     inputRef.current?.focus();

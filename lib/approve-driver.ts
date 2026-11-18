@@ -1,13 +1,9 @@
 import { pool } from './db';
+import { EMAIL_PATTERN } from './email';
 
 export type ApproveResult =
   | { ok: true }
   | { ok: false; status: number; error: string };
-
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-export const normalizeEmail = (value: unknown) =>
-  typeof value === 'string' ? value.trim().toLowerCase() : '';
 
 export async function approveDriver(email: string): Promise<ApproveResult> {
   if (!EMAIL_PATTERN.test(email)) {
